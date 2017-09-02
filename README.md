@@ -1,7 +1,7 @@
 # Network_Management_PythonV
 
 
-Python script to control the network interfaces of your device.
+Python script to control the network interfaces of your device, Available in both GUI and CMD.
 
 You can use it to achieve the following goals:
 
