@@ -19,7 +19,7 @@ You can use it to achieve the following goals:
 
 7 - Showing all active connections on your device.
 
-8 - Showing the DNS cashe on your device and clear it if you want.
+8 - Showing the DNS cache on your device and clear it if you want.
 
 9 - The ability to configure a hotspot from your device directly without using a third party application.
 
