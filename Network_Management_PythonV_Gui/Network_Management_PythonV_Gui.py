@@ -19,8 +19,8 @@ os.chdir(r'C:\Windows\System32')
 
 class Gui(QMainWindow):
 
-    def __init__(self, parent=None):
-        super(QMainWindow, self).__init__(parent)
+    def __init__(self):
+        super(QMainWindow, self).__init__()
 
         self.setWindowTitle('Network Management')
         self.setMaximumWidth(500)
@@ -29,6 +29,7 @@ class Gui(QMainWindow):
         self.setMinimumHeight(500)
         self.setWindowIcon(QIcon(cwd + r'\network.png'))
         self.setStyleSheet(styleFile)
+        
         ##########################################################
         ## Help Choices
         self.about = QAction('About', self)
@@ -44,7 +45,7 @@ class Gui(QMainWindow):
 
         self.body()
         self.ipFind = IpFind()
-        self.disCash = Cashe()
+        self.disCash = Cache()
         self.disActive = NetStat()
         self.statIp = StatIP()
         self.disMac = DisMAc()
@@ -64,67 +65,67 @@ class Gui(QMainWindow):
 
 
         self.ipBtn = QPushButton('IPV4 Address', self)
-        self.ipBtn.setGeometry(198, 80, 100, 40)
+        self.ipBtn.setGeometry(190, 80, 120, 40)
         self.ipBtn.clicked.connect(self.disIP)
         self.ipBtn.setStatusTip('Display info about all interfaces IP.')
         self.ipBtn.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.staticIp = QPushButton('Set Static IP', self)
-        self.staticIp.setGeometry(100, 130, 100, 40)
+        self.staticIp.setGeometry(85, 130, 120, 40)
         self.staticIp.clicked.connect(self.stIp)
         self.staticIp.setStatusTip('Set device IPV4 Statically.')
         self.staticIp.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.dynamicIp = QPushButton('Set Dynamic IP', self)
-        self.dynamicIp.setGeometry(300, 130, 100, 40)
+        self.dynamicIp.setGeometry(300, 130, 120, 40)
         self.dynamicIp.clicked.connect(self.dyIP)
         self.dynamicIp.setStatusTip('Set device IPV4 Dynamically.')
         self.dynamicIp.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.macBtn = QPushButton('Mac Address', self)
-        self.macBtn.setGeometry(300, 200, 100, 40)
+        self.macBtn.setGeometry(300, 200, 120, 40)
         self.macBtn.clicked.connect(self.disMc)
         self.macBtn.setStatusTip('Display info about all interfaces including MAC addresses.')
         self.macBtn.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.restartNet = QPushButton('Restart Network', self)
-        self.restartNet.setGeometry(100, 200, 100, 40)
+        self.restartNet.setGeometry(85, 200, 120, 40)
         self.restartNet.clicked.connect(self.restartNetwork)
         self.restartNet.setStatusTip('Restart device dynamic ip, MUST NOT be set Static.')
         self.restartNet.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.disConnect = QPushButton('Disconnect', self)
-        self.disConnect.setGeometry(100, 270, 100, 40)
+        self.disConnect.setGeometry(85, 270, 120, 40)
         self.disConnect.clicked.connect(self.disconnectNet)
         self.disConnect.setStatusTip('Release device ip, MUST NOT be set Static.')
         self.disConnect.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.netStat = QPushButton('Display Netstat', self)
-        self.netStat.setGeometry(300, 270, 100, 40)
+        self.netStat.setGeometry(300, 270, 120, 40)
         self.netStat.clicked.connect(self.disNet)
         self.netStat.setStatusTip('Display all active connections.')
         self.netStat.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.dnsCashe = QPushButton('DNS Cashe', self)
-        self.dnsCashe.setGeometry(100, 340, 100, 40)
-        self.dnsCashe.clicked.connect(self.disCashe)
-        self.dnsCashe.setStatusTip('Display DNS cashe.')
-        self.dnsCashe.setCursor(QCursor(Qt.PointingHandCursor))
+        self.dnsCache  = QPushButton('DNS Cache ', self)
+        self.dnsCache .setGeometry(85, 340, 120, 40)
+        self.dnsCache .clicked.connect(self.disCache )
+        self.dnsCache .setStatusTip('Display DNS Cache .')
+        self.dnsCache .setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.clearCashe = QPushButton('Clear DNS Cashe', self)
-        self.clearCashe.setGeometry(300, 340, 100, 40)
-        self.clearCashe.clicked.connect(self.clrCash)
-        self.clearCashe.setStatusTip('Clear DNS Cashe.')
-        self.clearCashe.setCursor(QCursor(Qt.PointingHandCursor))
+        self.clearCache  = QPushButton('Clear DNS Cache ', self)
+        self.clearCache .setGeometry(300, 340, 120, 40)
+        self.clearCache .clicked.connect(self.clrCash)
+        self.clearCache .setStatusTip('Clear DNS Cache .')
+        self.clearCache .setCursor(QCursor(Qt.PointingHandCursor))
 
         self.startHot = QPushButton('Start HotSpot', self)
-        self.startHot.setGeometry(100, 410, 100, 40)
+        self.startHot.setGeometry(85, 410, 120, 40)
         self.startHot.clicked.connect(self.srHotspot)
         self.startHot.setStatusTip('Configure HotSpot(Laptops Only).')
         self.startHot.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.stopHot = QPushButton('Stop HotSpot', self)
-        self.stopHot.setGeometry(300, 410, 100, 40)
+        self.stopHot.setGeometry(300, 410, 120, 40)
         self.stopHot.clicked.connect(self.spHotspot)
         self.stopHot.setStatusTip('Stop HotSpot.')
         self.stopHot.setCursor(QCursor(Qt.PointingHandCursor))
@@ -159,7 +160,7 @@ class Gui(QMainWindow):
     def disNet(self):
         self.disActive.start()
 
-    def disCashe(self):
+    def disCache (self):
         self.disCash.start()
 
     def clrCash(self):
@@ -200,9 +201,9 @@ class IpFind(QThread): # ipconfig thread
     def run(self):
         sub.Popen('start cmd.exe /k netsh interface ipv4 show config ', shell=True)
 
-class Cashe(QThread): # display cashe thread
+class Cache (QThread): # display Cache  thread
     def __init__(self, parent=None):
-        super(Cashe, self).__init__(parent)
+        super(Cache , self).__init__(parent)
     def run(self):
         sub.Popen('start cmd.exe /k ipconfig /displaydns ', shell=True)
 
@@ -309,6 +310,7 @@ class StNetworkIp(QWidget):
         self.apply.setStyleSheet('QWidget {font-family:Segoe Script; font-size:12px; font-weight:bold}')
         self.apply.setEnabled(False)
         self.apply.clicked.connect(self.readInfo)
+        self.apply.setCursor(QCursor(Qt.PointingHandCursor))
         self.gridLayout.addWidget(self.apply, 7, 0, 2, 1)
 
 
@@ -340,6 +342,7 @@ class StNetworkIp(QWidget):
         self.thrd.NAME = self.interfaceT.text()
 
         self.thrd.start()
+        self.close()
 
 class StIP(QThread):
     def __init__(self):
@@ -386,6 +389,7 @@ class DyNetworkIP(QWidget):
         self.apply = QPushButton('Apply', self)
         self.apply.setStyleSheet('QWidget {font-family:Segoe Script; font-size:12px; font-weight:bold}')
         self.apply.setEnabled(False)
+        self.apply.setCursor(QCursor(Qt.PointingHandCursor))
         self.apply.clicked.connect(self.readInfo)
         self.gridLayout.addWidget(self.apply, 7, 0, 2, 1)
 
@@ -450,6 +454,7 @@ class Hotspot(QWidget):
         self.ok = QPushButton('OK', self)
         self.gridLayout.addWidget(self.ok, 3, 0, 2, 1)
         self.ok.setEnabled(False)
+        self.ok.setCursor(QCursor(Qt.PointingHandCursor))
         self.ok.setStyleSheet('QWidget {font-family:Segoe Script; font-size:12px; font-weight:bold}')
         self.ok.clicked.connect(self.readInfo)
 
@@ -520,7 +525,7 @@ class About(QWidget):
                          '5 - Set device\'s ip statically.\n'
                          '6 - Set device\'s ip dynamically.\n'
                          '7 - Showing all active connections on your device.\n'
-                         '8 - Showing the DNS cashe on your device and \n'
+                         '8 - Showing the DNS Cache  on your device and \n'
                          '     clear it if you want.\n'
                          '9 - The ability to configure a hotspot from your \n'
                          '     device directly without using a third party application.\n \n'
