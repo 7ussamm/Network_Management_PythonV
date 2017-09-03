@@ -61,24 +61,24 @@ def mainCore():
         prnt()
         inputValue = usr()
         if inputValue == 1:
-            sub.Popen(cmds[0], shell=True)
+            sub.call(cmds[0], shell=True)
             print('###############################################################')
 
         elif inputValue == 2:
-            sub.Popen(cmds[1], shell=True)
+            sub.call(cmds[1], shell=True)
             print('###############################################################')
 
         elif inputValue == 3:
-            sub.Popen(cmds[2], shell=True)
-            sub.Popen(cmds[3], shell=True)
+            sub.call(cmds[2], shell=True)
+            sub.call(cmds[3], shell=True)
             print('###############################################################')
 
         elif inputValue == 4:
-            sub.Popen(cmds[2], shell=True)
+            sub.call(cmds[2], shell=True)
             print('###############################################################')
 
         elif inputValue == 5:
-            sub.Popen('netsh interface ip show interfaces', shell=True)
+            sub.call('netsh interface ip show interfaces', shell=True)
 
             interface = input('Interface Name ==> ')
             ip = input('IPV4 Address ==> ')
@@ -87,39 +87,39 @@ def mainCore():
             dnsPrimary = input('Primary DNS ==> ')
             dnsSecondary = input('Secondary DNS ==> ')
 
-            sub.Popen('netsh interface ipv4 set address name="{}" static {} {} {}'.format(interface, ip, mac, ipDefault), shell=True)
-            sub.Popen('netsh interface ipv4 set dns name="{}" static {}'.format(interface, dnsPrimary), shell=True)
-            sub.Popen('netsh interface ipv4 add dns name="{}" {}'.format(interface, dnsSecondary), shell=True)
+            sub.call('netsh interface ipv4 set address name="{}" static {} {} {}'.format(interface, ip, mac, ipDefault), shell=True)
+            sub.call('netsh interface ipv4 set dns name="{}" static {}'.format(interface, dnsPrimary), shell=True)
+            sub.call('netsh interface ipv4 add dns name="{}" {}'.format(interface, dnsSecondary), shell=True)
             print('###############################################################')
 
         elif inputValue == 6:
-            sub.Popen('netsh interface ip show interfaces', shell=True)
+            sub.call('netsh interface ip show interfaces', shell=True)
 
             interface = input('Interface Name ==> ')
 
-            sub.Popen('netsh interface ipv4 set address name={} source=dhcp'.format(interface), shell=True)
-            sub.Popen('netsh interface ipv4 set dns "{}" dhcp'.format(interface), shell=True)
+            sub.call('netsh interface ipv4 set address name={} source=dhcp'.format(interface), shell=True)
+            sub.call('netsh interface ipv4 set dns "{}" dhcp'.format(interface), shell=True)
             print('###############################################################')
 
 
         elif inputValue == 7:
-            sub.Popen(cmds[4], shell=True)
+            sub.call(cmds[4], shell=True)
             print('###############################################################')
 
         elif inputValue == 8:
-            sub.Popen('start cmd.exe /k ipconfig /displaydns', shell=True)
+            sub.call('start cmd.exe /k ipconfig /displaydns', shell=True)
             print('###############################################################')
 
         elif inputValue == 9:
-            sub.Popen(cmds[6], shell=True)
+            sub.call(cmds[6], shell=True)
             print('###############################################################')
 
         elif inputValue == 10:
             usrName = input('User Name of the network ==> ')
             password = input('Password (Must be more than 8 characters) ==> ')
 
-            sub.Popen('netsh wlan set hostednetwork  mode=allow  ssid={}  key = {}'.format(usrName, password), shell=True)
-            sub.Popen('netsh wlan start hostednetwork', shell=True)
+            sub.call('netsh wlan set hostednetwork  mode=allow  ssid={}  key = {}'.format(usrName, password), shell=True)
+            sub.call('netsh wlan start hostednetwork', shell=True)
 
             print("Now go to Control Panel / Network and Internet / Network and Sharing Center \n"
                   "and open change adapter settings and select the network(Ethernet) you want to share and \n"
@@ -128,7 +128,7 @@ def mainCore():
             print('###############################################################')
 
         elif inputValue == 11:
-            sub.Popen('netsh wlan stop hostednetwork', shell=True)
+            sub.call('netsh wlan stop hostednetwork', shell=True)
             print('###############################################################')
 
         elif inputValue == 12:
